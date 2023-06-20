@@ -19,7 +19,7 @@ public class Employee extends Person{
     @ManyToOne
     @JoinColumn(name="employeetypeid", insertable = false, updatable = false)
     private EmployeeType employeeType;
-    private Integer employeetypeId;
+    private Integer employeetypeid;
     private String photo;
     private String username;
 
