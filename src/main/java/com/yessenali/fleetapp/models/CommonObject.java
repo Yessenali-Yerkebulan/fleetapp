@@ -28,14 +28,8 @@ public class CommonObject {
         this.details = details;
     }
 
-    @Override
     public Integer getId() {
         return id;
-    }
-
-    @Override
-    public boolean isNew() {
-        return false;
     }
 
     public void setId(Integer id) {
