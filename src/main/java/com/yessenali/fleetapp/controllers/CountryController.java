@@ -5,11 +5,10 @@ import com.yessenali.fleetapp.services.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class CountryController {
@@ -28,5 +27,11 @@ public class CountryController {
     public String addNew(Country country){
         countryService.save(country);
         return "redirect:/countries";
+    }
+
+    @RequestMapping("/countries/findById/")
+    @ResponseBody
+    public Optional<Country> findById(int id){
+        return countryService.findById(id);
     }
 }

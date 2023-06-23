@@ -423,7 +423,7 @@
           <td th:text="${country.code}"></td>
           <td>
             <div class="btn-group">
-              <a  class="btn btn-primary" id="editButton">Edit</a>
+              <a th:href="@{/countries/findById/(id=${country.id})}"  class="btn btn-primary" id="editButton">Edit</a>
             </div>
           </td>
         </tr>
