@@ -390,9 +390,37 @@
   <!--main content start-->
   <section id="main-content">
     <section class="wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 class="page-header"><i class="fa fa-table"></i> List of Countries</h3>
+          <ol class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+            <li><i class="fa fa-table"></i>Pages</li>
+            <li><i class="fa fa-th-list"></i>Pages</li>
+          </ol>
+        </div>
+      </div>
       <!-- page start-->
-
-      <h1>List of Countries</h1>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Continent</th>
+          <th>Capital</th>
+          <th>Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="country:${countries}">
+          <td th:text="${country.id}"></td>
+          <td th:text="${country.description}"></td>
+          <td th:text="${country.continent}"></td>
+          <td th:text="${country.capital}"></td>
+          <td th:text="${country.code}"></td>
+        </tr>
+        </tbody>
+      </table>
       <!-- page end-->
     </section>
   </section>
