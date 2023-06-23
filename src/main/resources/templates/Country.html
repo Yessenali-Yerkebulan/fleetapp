@@ -499,7 +499,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <form th:action="@{/countries/new}" method="post">
+        <form th:action="@{/countries/update}" method="put">
+          <div class="form-group">
+            <input class="form-control" id="idEdit" name="id" type="hidden">
+          </div>
           <div class="form-group">
             <label for="descriptionEdit" class="col-form-label">Description:</label>
             <input type="text" class="form-control" id="descriptionEdit" name="description">
