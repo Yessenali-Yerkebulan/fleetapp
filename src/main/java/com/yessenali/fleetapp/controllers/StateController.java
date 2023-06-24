@@ -1,7 +1,9 @@
 package com.yessenali.fleetapp.controllers;
 
 
+import com.yessenali.fleetapp.models.Country;
 import com.yessenali.fleetapp.models.State;
+import com.yessenali.fleetapp.services.CountryService;
 import com.yessenali.fleetapp.services.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +17,14 @@ import java.util.Optional;
 public class StateController {
     @Autowired
     private StateService stateService;
-
+    @Autowired
+    private CountryService countryService;
     @GetMapping("/states")
     public String getStates(Model model){
         List<State> stateList = stateService.getStates();
         model.addAttribute("states", stateList);
+        List<Country> countryList = countryService.getCountries();
+        model.addAttribute("countries", countryList);
         return "State";
     }
 

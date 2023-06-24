@@ -390,7 +390,7 @@
   <!--main content start-->
   <section id="main-content">
     <section class="wrapper">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add Country</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add State</button>
 
       <!-- page start-->
       <table class="table">
@@ -405,12 +405,12 @@
         <tbody>
         <tr th:each="state:${states}">
           <td th:text="${state.id}"></td>
-          <td th:text="${state.name}"></td>
+          <td th:text="${state.description}"></td>
           <td th:text="${state.details}"></td>
           <td>
             <div class="btn-group">
               <a th:href="@{/states/findById/(id=${state.id})}"  class="btn btn-primary" id="editButton"><i class="icon_pencil-edit"></i></a>
-              <a class="btn btn-success" id="detailsButton"><i class="icon_document_alt"></i></a>
+              <a class="btn btn-success" id="detailsButton" th:href="@{/states/findById/(id=${state.id})}"><i class="icon_document_alt"></i></a>
               <a th:href="@{/states/delete/(id=${state.id})}" class="btn btn-danger" id="deleteButton"><i class="icon_close_alt2"></i></a>
             </div>
           </td>
@@ -469,7 +469,7 @@
           </div>
           <div class="form-group">
             <label for="details" class="col-form-label">Details:</label>
-            <input type="text" class="form-control" id="details" name="details">
+            <input type="text" class="form-control" id="details" name="details" required>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -532,6 +532,71 @@
       </div>
     </div>
   </div>
+</div>
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <form>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">State Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="idDetails" name="id" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="ddlCountryDetails" class="col-form-label">Country: </label>
+            <select class="form-control" id="ddlCountryDetails" name="countryid">
+              <option>-SELECT-</option>
+              <option th:each="country : ${countries}"
+                      th:value="${country.id}"
+                      th:text="${country.description}">
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="col-form-label">Description:</label>
+            <input type="text" class="form-control" id="descriptionDetails" name="name" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="codeDetails" class="col-form-label">Code:</label>
+            <input type="text" class="form-control" id="codeDetails" name="code" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="capitalDetails" class="col-form-label">Capital:</label>
+            <input type="text" class="form-control" id="capitalDetails" name="capital" readonly>
+          </div>
+
+          <div class="form-group">
+            <label class="col-form-label">Details:</label>
+            <input type="text" class="form-control" id="detailsDetails" name="details" readonly>
+          </div>
+
+          <div class="form-group">
+            <label class="col-form-label">Last Updated By:</label>
+            <input type="text" class="form-control" id="lastModifiedByDetails" name="lastModifiedBy" readonly>
+          </div>
+
+          <div class="form-group">
+            <label class="col-form-label">Last Updated On:</label>
+            <input type="text" class="form-control" id="lastModifiedDateDetails" name="lastModifiedDate" readonly>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">

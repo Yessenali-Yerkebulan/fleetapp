@@ -17,7 +17,7 @@ public class State {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
+    private String description;
     private String capital;
     private String code;
 
