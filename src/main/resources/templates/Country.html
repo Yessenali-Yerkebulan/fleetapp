@@ -408,7 +408,6 @@
         <tr>
           <th>ID</th>
           <th>Description</th>
-          <th>Continent</th>
           <th>Capital</th>
           <th>Code</th>
           <th>Actions</th>
@@ -418,13 +417,13 @@
         <tr th:each="country:${countries}">
           <td th:text="${country.id}"></td>
           <td th:text="${country.description}"></td>
-          <td th:text="${country.continent}"></td>
           <td th:text="${country.capital}"></td>
           <td th:text="${country.code}"></td>
           <td>
             <div class="btn-group">
-              <a th:href="@{/countries/findById/(id=${country.id})}"  class="btn btn-primary" id="editButton">Edit</a>
-              <a th:href="@{/countries/delete/(id=${country.id})}"  class="btn btn-danger" id="deleteButton">Delete</a>
+              <a th:href="@{/countries/findById/(id=${country.id})}"  class="btn btn-primary" id="editButton"><i class="icon_pencil-edit"></i></a>
+              <a class="btn btn-success" id="detailsButton"><i class="icon_document_alt"></i></a>
+              <a th:href="@{/countries/delete/(id=${country.id})}" class="btn btn-danger" id="deleteButton"><i class="icon_close_alt2"></i></a>
             </div>
           </td>
         </tr>
