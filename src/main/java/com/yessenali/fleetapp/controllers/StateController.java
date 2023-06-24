@@ -18,8 +18,8 @@ public class StateController {
 
     @GetMapping("/states")
     public String getStates(Model model){
-        List<State> countryList = stateService.getStates();
-        model.addAttribute("countries", countryList);
+        List<State> stateList = stateService.getStates();
+        model.addAttribute("states", stateList);
         return "State";
     }
 
