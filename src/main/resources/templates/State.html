@@ -563,7 +563,7 @@
 
           <div class="form-group">
             <label for="ddlCountryDetails" class="col-form-label">Country: </label>
-            <select class="form-control" id="ddlCountryDetails" name="countryid">
+            <select class="form-control" id="ddlCountryDetails" name="countryid" disabled="disabled">
               <option>-SELECT-</option>
               <option th:each="country : ${countries}"
                       th:value="${country.id}"
@@ -574,7 +574,7 @@
 
           <div class="form-group">
             <label class="col-form-label">Description:</label>
-            <input type="text" class="form-control" id="descriptionDetails" name="name" readonly>
+            <input type="text" class="form-control" id="descriptionDetails" name="description" readonly>
           </div>
 
           <div class="form-group">
