@@ -19,8 +19,8 @@ public class StateService {
     }
 
     //save new state
-    public void save(State country){
-        stateRepository.save(country);
+    public void save(State state){
+        stateRepository.save(state);
     }
 
     //get country by id
