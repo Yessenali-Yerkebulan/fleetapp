@@ -402,8 +402,45 @@
   <section id="main-content">
     <section class="wrapper">
       <!-- page start-->
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 class="page-header"><i class="fa fa-table"></i> List of Contacts</h3>
+          <ol class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+            <li><i class="fa fa-table"></i>Pages</li>
+            <li><i class="fa fa-th-list"></i>Pages</li>
+          </ol>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add Contact</button>
 
-      <h1>List of Contacts</h1>
+      <!-- page start-->
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contact:${contacts}">
+          <td th:text="${contact.id}"></td>
+          <td th:text="${contact.firstname} + ' '+${contact.lastname}"></td>
+          <td th:text="${contact.email}"></td>
+          <td th:text="${contact.phone}"></td>
+          <td>
+            <div class="btn-group">
+              <a th:href="@{/contacts/findById/(id=${contact.id})}"  class="btn btn-primary" id="editButton"><i class="icon_pencil-edit"></i></a>
+              <a class="btn btn-success" id="detailsButton" th:href="@{/contacts/findById/(id=${contact.id})}"><i class="icon_document_alt"></i></a>
+              <a th:href="@{/contacts/delete/(id=${contact.id})}" class="btn btn-danger" id="deleteButton"><i class="icon_close_alt2"></i></a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
       <!-- page end-->
     </section>
   </section>
@@ -421,6 +458,187 @@
   </div>
 </section>
 <!-- container section end -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form th:action="@{/contacts/new}" method="post">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Contact Record</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="txtFirstnameAdd" class="col-form-label">Firstname:</label>
+            <input type="text" class="form-control" id="txtFirstnameAdd" name="firstname" required>
+          </div>
+
+          <div class="form-group">
+            <label for="txtLastNameAdd" class="col-form-label">Lastname:</label>
+            <input type="text" class="form-control" id="txtLastNameAdd" name="lastname" required>
+          </div>
+
+          <div class="form-group">
+            <label for="txtEmailAdd" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="txtEmailAdd" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="txtMobileAdd" class="col-form-label">Mobile:</label>
+            <input type="text" class="form-control" id="txtMobileAdd" name="mobile" required>
+          </div>
+          <div class="form-group">
+            <label for="txtPhoneAdd" class="col-form-label">Phone:</label>
+            <input type="text" class="form-control" id="txtPhoneAdd" name="phone" required>
+          </div>
+
+          <div class="form-group">
+            <label for="txtRemarksAdd" class="col-form-label">Remarks:</label>
+            <input type="text" class="form-control" id="txtRemarksAdd" name="remarks" required>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form th:action="@{/contacts/update}" method="put">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Contact Record</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="txtIdEdit" class="col-form-label">Id:</label>
+            <input type="hidden" class="form-control" id="txtIdEdit" name="id">
+          </div>
+
+          <div class="form-group">
+            <label for="txtFirstnameEdit" class="col-form-label">Firstname:</label>
+            <input type="text" class="form-control" id="txtFirstnameEdit" name="firstname" required>
+          </div>
+
+          <div class="form-group">
+            <label for="txtLastnameEdit" class="col-form-label">Lastname:</label>
+            <input type="text" class="form-control" id="txtLastnameEdit" name="lastname" required>
+          </div>
+
+          <div class="form-group">
+            <label for="txtEmailEdit" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="txtEmailEdit" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="txtMobileEdit" class="col-form-label">Mobile:</label>
+            <input type="text" class="form-control" id="txtMobileEdit" name="mobile" required>
+          </div>
+          <div class="form-group">
+            <label for="txtPhoneEdit" class="col-form-label">Phone:</label>
+            <input type="text" class="form-control" id="txtPhoneEdit" name="phone" required>
+          </div>
+
+          <div class="form-group">
+            <label for="txtRemarksEdit" class="col-form-label">Remarks:</label>
+            <input type="text" class="form-control" id="txtRemarksEdit" name="remarks" required>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form>
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Details Contact Record</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="txtIdDetails" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="txtIdDetails" name="id" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="txtFirstnameDetails" class="col-form-label">Firstname:</label>
+            <input type="text" class="form-control" id="txtFirstnameDetails" name="firstname" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="txtLastnameDetails" class="col-form-label">Lastname:</label>
+            <input type="text" class="form-control" id="txtLastnameDetails" name="lastname" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="txtEmailDetails" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="txtEmailDetails" name="email" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="txtMobileDetails" class="col-form-label">Mobile:</label>
+            <input type="text" class="form-control" id="txtMobileDetails" name="mobile" readonly>
+          </div>
+          <div class="form-group">
+            <label for="txtPhoneDetails" class="col-form-label">Phone:</label>
+            <input type="text" class="form-control" id="txtPhoneDetails" name="phone" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="txtRemarksDetails" class="col-form-label">Remarks:</label>
+            <input type="text" class="form-control" id="txtRemarksDetails" name="remarks" readonly>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="deleteModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this record?</p>
+      </div>
+      <div class="modal-footer">
+        <a href="" class="btn btn-primary" id="confirmDeleteButton">Yes, Delete</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- javascripts -->
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -429,6 +647,7 @@
 <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
 <!--custome script for all page-->
 <script src="js/scripts.js"></script>
+<script src="js/contact.js"></script>
 
 
 </body>
