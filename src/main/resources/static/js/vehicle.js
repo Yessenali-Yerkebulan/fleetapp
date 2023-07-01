@@ -1,9 +1,9 @@
 $('document').ready(function() {
     $('.table #editButton').on('click',function(event){
         event.preventDefault();
-        var href= $(this).attr('href');
+        let href= $(this).attr('href');
         $.get(href, function(vehicle, status){
-            var acDate = vehicle.acquisitionDate.substr(0,10);
+            let acDate = vehicle.acquisitionDate.substr(0,10);
             $('#txtAcquisitionDateEdit').val(acDate);
             $('#txtDescriptionEdit').val(vehicle.description);
             $('#ddlEmployeeEdit').val(vehicle.employeeid);
@@ -13,7 +13,7 @@ $('document').ready(function() {
             $('#txtNameEdit').val(vehicle.name);
             $('#txtNetWeightEdit').val(vehicle.netWeight);
             $('#txtPowerEdit').val(vehicle.power);
-            var regDate = vehicle.registrationDate.substr(0,10);
+            let regDate = vehicle.registrationDate.substr(0,10);
             $('#txtRegistrationDateEdit').val(regDate);
             $('#txtRemarksEdit').val(vehicle.remarks);
             $('#ddlVehicleMakeEdit').val(vehicle.vehiclemakeid);
@@ -27,7 +27,7 @@ $('document').ready(function() {
 
     $('.table #detailsButton').on('click',function(event) {
         event.preventDefault();
-        var href= $(this).attr('href');
+        let href= $(this).attr('href');
         $.get(href, function(vehicleType, status){
             $('#idDetails').val(vehicleType.id);
             $('#descriptionDetails').val(vehicleType.description);
@@ -40,14 +40,14 @@ $('document').ready(function() {
 
     $('.table #deleteButton').on('click',function(event) {
         event.preventDefault();
-        var href = $(this).attr('href');
+        let href = $(this).attr('href');
         $('#deleteModal #delRef').attr('href', href);
         $('#deleteModal').modal();
     });
 
     $('.table #photoButton').on('click',function(event) {
         event.preventDefault();
-        var href = $(this).attr('href');
+        let href = $(this).attr('href');
         $('#photoModal #vehiclePhoto').attr('src', href);
         $('#photoModal').modal();
     });
