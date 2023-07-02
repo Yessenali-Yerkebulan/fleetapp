@@ -15,7 +15,6 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

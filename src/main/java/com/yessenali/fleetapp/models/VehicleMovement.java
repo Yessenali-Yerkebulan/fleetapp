@@ -14,7 +14,6 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class VehicleMovement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
