@@ -458,23 +458,17 @@
 </section>
 
   <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form th:action="@{/jobTitles/addNew}" method="post">
+    <form th:action="@{/jobTitles/new}" method="post">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New Vehicle Record</h5>
+            <h5 class="modal-title" id="exampleModalLabel">New Job Title</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 
           <div class="modal-body">
-
-            <div class="form-group">
-              <label for="idAdd" class="col-form-label">Id:</label>
-              <input type="text" class="form-control" id="idAdd" name="id" disabled>
-            </div>
-
             <div class="form-group">
               <label for="descriptionEdit" class="col-form-label">Description:</label>
               <input type="text" class="form-control" id="descriptionAdd" name="description" required>
@@ -482,7 +476,7 @@
 
             <div class="form-group">
               <label for="detailsEdit" class="col-form-label">Details:</label>
-              <input type="text" class="form-control" id="detailsAdd" name="details">
+              <input type="text" class="form-control" id="detailsAdd" name="details" required>
             </div>
           </div>
 
@@ -499,7 +493,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="editModalLabel">Edit Vehicle Type</h5>
+            <h5 class="modal-title" id="editModalLabel">Edit Job Title</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -508,7 +502,7 @@
 
             <div class="form-group">
               <label for="idEdit" class="col-form-label">Id:</label>
-              <input type="text" class="form-control" id="idEdit" name="id" readonly>
+              <input type="hidden" class="form-control" id="idEdit" name="id" readonly>
             </div>
 
             <div class="form-group">
@@ -518,7 +512,7 @@
 
             <div class="form-group">
               <label for="detailsEdit" class="col-form-label">Details:</label>
-              <input type="text" class="form-control" id="detailsEdit" name="details">
+              <input type="text" class="form-control" id="detailsEdit" name="details" required>
             </div>
           </div>
           <div class="modal-footer">
@@ -535,7 +529,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="detailsModalLabel">Employee Type Details</h5>
+            <h5 class="modal-title" id="detailsModalLabel">Job Title Details</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

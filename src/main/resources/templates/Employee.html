@@ -418,6 +418,7 @@
       <table class="table">
         <thead>
         <tr>
+          <th>Photo</th>
           <th>ID</th>
           <th>Full Name</th>
           <th>Hire Date</th>
@@ -429,6 +430,7 @@
         </thead>
         <tbody>
         <tr th:each="employee:${employees}">
+          <td><a id="photoButton" th:href="@{'/img/photos/'+${employee.id}+'.jpg'}"><img th:src="@{'/img/photos/'+${employee.id}+'.jpg'}" width="40", height="40"></a></td>
           <td th:text="${employee.id}"></td>
           <td th:text="${employee.firstname} + ' '+ ${employee.lastname}"></td>
           <td th:text="${employee.hireDate}"></td>
@@ -814,7 +816,7 @@
                   <div class="form-group row">
                     <label for="fupImageEdit" class="col-sm-4 col-form-label">Select Image: </label>
                     <div class="col-sm-6">
-                      <input type="file" class="form-control-file" id="fupImageEdit" name="photo" placeholder="Select File" required>
+                      <input type="file" class="form-control-file" id="fupImageEdit" name="photo" placeholder="Select File">
                     </div>
                   </div>
                 </td>
@@ -862,7 +864,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <img id="employeePhoto" src="" width="90%" height="90%">
+        <img id="employeePhoto" src="" width="95%" height="95%">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
