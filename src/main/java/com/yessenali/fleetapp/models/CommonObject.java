@@ -11,14 +11,14 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class CommonObject {
+public class CommonObject extends Auditable<String>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String description;
     private String details;
 
-    public CommonObject() {
+    public CommonObject(){
 
     }
 

@@ -10,6 +10,5 @@ import javax.persistence.Entity;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = false)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class VehicleModel extends CommonObject{
 }
