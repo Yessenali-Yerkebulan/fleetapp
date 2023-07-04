@@ -13,32 +13,30 @@ import java.util.Set;
 
 @Service
 public class RoleService {
+
     @Autowired
     private RoleRepository roleRepository;
 
     @Autowired
     private UserRepository userRepository;
 
-    //return list of Roles;
     public List<Role> getRoles(){
         return roleRepository.findAll();
     }
 
-    //save new Role
-    public void save(Role Role){
-        roleRepository.save(Role);
+    public void save(Role client) {
+        roleRepository.save(client);
     }
 
-    //get Role by id
-    public Optional<Role> findById(int id){
-        return roleRepository.findById(id);
+    public Role findById(int id) {
+        return roleRepository.findById(id).orElse(null);
     }
 
     public void delete(Integer id) {
         roleRepository.deleteById(id);
     }
 
-    public void assignUserRole(Integer userId, Integer roleId){
+    public void assignRole(Integer userId, Integer roleId){
         User user = userRepository.findById(userId).orElse(null);
         Role role = roleRepository.findById(roleId).orElse(null);
         Set<Role> userRoles = user.getRoles();
@@ -51,6 +49,7 @@ public class RoleService {
         User user = userRepository.findById(userId).orElse(null);
         Set<Role> userRoles = user.getRoles();
         userRoles.removeIf(x -> x.getId() == roleId);
+        user.setRoles(userRoles);
         userRepository.save(user);
     }
 
@@ -58,7 +57,9 @@ public class RoleService {
         return user.getRoles();
     }
 
-    public Set<Role> getUserNotRoles(User user){
+
+    public List<Role> getUserNotRoles(User user){
         return roleRepository.getUserNotRoles(user.getId());
     }
+
 }

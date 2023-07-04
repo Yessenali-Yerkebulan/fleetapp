@@ -1,6 +1,5 @@
 package com.yessenali.fleetapp.security.models;
 
-import com.yessenali.fleetapp.models.Auditable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,11 +13,11 @@ import javax.persistence.Id;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Role extends Auditable<String> {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    private Integer id;
+public class Role {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String description;
     private String details;
 }
