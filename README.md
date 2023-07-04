@@ -15,4 +15,4 @@ Used Technologies:
   <li>HTML and Basic CSS</li>
   <li>Bootstrap and JQuery</li>
 </ul>
-![2023-07-04_20-57-11](https://github.com/Yessenali-Yerkebulan/fleetapp/assets/113698340/1cdb87d9-7dde-4918-a155-dd90418200d2)
+https://github.com/Yessenali-Yerkebulan/fleetapp/assets/113698340/1cdb87d9-7dde-4918-a155-dd90418200d2
