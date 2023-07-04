@@ -1,15 +1,18 @@
 # fleetapp
 Fleetapp CMS app Using Spring Boot and Thymeleaf
+<br>
 Used Technologies:
-Java Programming
-JavaScript programming
-Spring Security – User Login
-Spring Data Jpa
-Hibernate ORM
-MySQL Database – basic command
-Thymeleaf Template Engine
-HTML and Basic CSS
-Debugging Skills
-Bootstrap and JQuery
-Source Control using GitHub
+<br>
+<ul>
+  <li>Java Programming</li>
+  <li>JavaScript programming</li>
+  <li>Spring Security – User Login</li>
+  <li>Spring Data Jpa</li>
+  <li>Hibernate ORM</li>
+  <li>MySQL Database – basic command</li>
+  <li>Thymeleaf Template Engine</li>
+  <li>Java Programming</li>
+  <li>HTML and Basic CSS</li>
+  <li>Bootstrap and JQuery</li>
+</ul>
 ![2023-07-04_20-57-11](https://github.com/Yessenali-Yerkebulan/fleetapp/assets/113698340/1cdb87d9-7dde-4918-a155-dd90418200d2)
