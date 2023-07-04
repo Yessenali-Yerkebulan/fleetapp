@@ -9,6 +9,7 @@ $('document').ready(function() {
         let href= $(this).attr('href');
         $.get(href, function(employee, status){
             $('#txtAddressEdit').val(employee.address);
+            $('#txtUsernameEdit').val(employee.username);
             $('#txtCityEdit').val(employee.city);
             $('#ddlNationalityEdit').val(employee.countryid);
             let dob = employee.dateOfBirth.substr(0,10);

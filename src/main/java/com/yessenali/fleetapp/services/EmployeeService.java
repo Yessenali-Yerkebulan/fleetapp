@@ -2,8 +2,10 @@ package com.yessenali.fleetapp.services;
 
 import com.yessenali.fleetapp.models.Employee;
 import com.yessenali.fleetapp.models.Employee;
+import com.yessenali.fleetapp.models.User;
 import com.yessenali.fleetapp.repositories.EmployeeRepository;
 import com.yessenali.fleetapp.repositories.EmployeeRepository;
+import com.yessenali.fleetapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ import java.util.Optional;
 public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     //return list of employees;
     public List<Employee> getEmployees(){
@@ -36,5 +40,15 @@ public class EmployeeService {
 
     public Employee findByUsername(String un) {
         return employeeRepository.findByUsername(un);
+    }
+
+    public void assignUsername(int id){
+        Employee employee = employeeRepository.findById(id).orElse(null);
+        User user = userRepository.findByFirstnameAndLastname(
+                employee.getFirstname(),
+                employee.getLastname()
+        );
+        employee.setUsername(user.getUsername());
+        employeeRepository.save(employee);
     }
 }
