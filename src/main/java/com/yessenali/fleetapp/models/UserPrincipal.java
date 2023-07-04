@@ -1,11 +1,14 @@
 package com.yessenali.fleetapp.models;
 
+import com.yessenali.fleetapp.security.models.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 public class UserPrincipal implements UserDetails {
 
@@ -18,7 +21,11 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority("USER"));
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        for(Role role : user.getRoles()){
+            authorities.add(new SimpleGrantedAuthority(role.getDescription()));
+        }
+        return authorities;
     }
 
     @Override
