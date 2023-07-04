@@ -33,4 +33,8 @@ public class EmployeeService {
     public void delete(Integer id) {
         employeeRepository.deleteById(id);
     }
+
+    public Employee findByUsername(String un) {
+        return employeeRepository.findByUsername(un);
+    }
 }
