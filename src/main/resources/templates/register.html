@@ -9,7 +9,7 @@
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
   <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>Login Page</title>
+  <title>Register New User</title>
 
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -41,26 +41,34 @@
 
   <div class="container">
 
-    <form class="login-form" th:action="@{/login}" method="post">
-      <div style="text-align:center; font-size:20px; color:green; font-weight:bold">
-        <span th:text="${message}"></span>
-      </div>
+    <form class="login-form" th:action="@{/users/addNew}" method="post">
       <div class="login-wrap">
         <p class="login-img"><i class="icon_lock_alt"></i></p>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_profile"></i></span>
+          <input type="text" class="form-control" placeholder="Firstname" name="firstname" autofocus>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_profile"></i></span>
+          <input type="text" class="form-control" placeholder="Lastname" name="lastname" autofocus>
+        </div>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_profile"></i></span>
           <input type="text" class="form-control" placeholder="Username" name="username" autofocus>
         </div>
         <div class="input-group">
           <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+          <input type="password" class="form-control" placeholder="Confirm Password" id="confirmPassword">
         </div>
         <label class="checkbox">
-                <input type="checkbox" value="remember-me"> Remember me
-                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
+          <span> <a th:href="@{/login}">Login Page</a></span>
+                <span class="pull-right"> <a th:href="@{/forgot-password}"> Forgot Password?</a></span>
             </label>
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-        <a th:href="@{/register}" class="btn btn-info btn-lg btn-block">Signup</a>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
       </div>
     </form>
     <div class="text-right">
@@ -75,6 +83,9 @@
         </div>
     </div>
   </div>
+  <script src="js/jquery.js"></script>
+<script src="js/register.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 
 
 </body>
